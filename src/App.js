@@ -7,6 +7,8 @@ import AddBudgetItem from './components/AddBudgetItem';
 import BarChart from './components/BarChart';
 import PieChart from './components/PieChart';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Alert } from 'react-bootstrap';
+import AddedAlert from './components/AddedAlert';
 
 export const numberFormatter =
   new Intl.NumberFormat('en-US', {
@@ -91,7 +93,7 @@ function App() {
         <div className="lower">
           <IncomeItems items={incomeState} onDelete={deleteIncomeItem} />
           <div className='alert-spot'>
-
+            {show && <AddedAlert show={show} setShow={setShow} danger={danger} />}
           </div>
           <ExpenseItems items={expenseState} total={incomeTotal} onDelete={deleteExpenseItem} />
         </div>
