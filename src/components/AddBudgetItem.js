@@ -51,7 +51,7 @@ function AddBudgetItem({ onAdd }) {
                 <div className="form-control ">
                     <label htmlFor="">Value</label>
                     <input type="number" value={value} onChange={(e) => {
-                        setValue(e.target.value)
+                        setValue(parseFloat(e.target.value))
                     }} />
                 </div>
 
