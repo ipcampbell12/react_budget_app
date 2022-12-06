@@ -1,11 +1,14 @@
 import React from 'react';
 
-function Item(props) {
+function IncomeItem({ item }) {
     return (
-        <div>
-
-        </div>
+        <tr className="table-success">
+            <td>{item.description}</td>
+            <td>{item.category}</td>
+            <td>{item.value}</td>
+            <td>X</td>
+        </tr>
     );
 }
 
-export default Item;
+export default IncomeItem;

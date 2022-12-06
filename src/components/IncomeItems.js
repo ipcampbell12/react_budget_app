@@ -1,11 +1,28 @@
-import Item from "./IncomItem"
 
-function Items({ items }) {
+import IncomeItem from "./IncomItem";
+
+function IncomeItems({ items }) {
     return (
-        <div>
+        <div className="income-table-container">
+            <h3 className="income-title"> Income Items</h3>
+            <table className="income-table table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Value</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {items.map((item) => (
+                        <IncomeItem item={item} />
+                    ))}
+                </tbody>
+            </table>
 
         </div>
-    );
+    )
 }
 
-export default Items;
+export default IncomeItems;
