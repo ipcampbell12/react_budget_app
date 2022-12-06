@@ -1,12 +1,12 @@
 import React from 'react';
 
-function IncomeItem({ item }) {
+function IncomeItem({ item, onDelete }) {
     return (
         <tr className="table-success">
             <td>{item.description}</td>
             <td>{item.category}</td>
             <td>{item.value}</td>
-            <td>X</td>
+            <td><button className='btn btn-danger' onClick={() => onDelete(item.id)}> X </button> </td>
         </tr>
     );
 }

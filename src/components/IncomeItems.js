@@ -1,7 +1,7 @@
 
 import IncomeItem from "./IncomItem";
 
-function IncomeItems({ items }) {
+function IncomeItems({ items, onDelete }) {
     return (
         <div className="income-table-container">
             <h3 className="income-title"> Income Items</h3>
@@ -16,7 +16,7 @@ function IncomeItems({ items }) {
                 </thead>
                 <tbody>
                     {items.map((item) => (
-                        <IncomeItem item={item} />
+                        <IncomeItem item={item} onDelete={onDelete} />
                     ))}
                 </tbody>
             </table>

@@ -1,7 +1,7 @@
 import React from 'react';
 import ExpenseItem from './ExpenseItem';
 
-function ExpenseItems({ items }) {
+function ExpenseItems({ items, total, onDelete }) {
     return (
         <div className="expense-table-container">
             <h3 className="expense-title"> Expense Items</h3>
@@ -17,7 +17,7 @@ function ExpenseItems({ items }) {
                 </thead>
                 <tbody>
                     {items.map((item) => (
-                        <ExpenseItem item={item} />
+                        <ExpenseItem item={item} total={total} onDelete={onDelete} />
                     ))}
                 </tbody>
             </table>
