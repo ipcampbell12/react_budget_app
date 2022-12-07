@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 
 
 
-function ClearModal({ showModal, handleClose, onCheck }) {
+function ClearModal({ showModal, handleClose }) {
 
 
     return (

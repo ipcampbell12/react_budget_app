@@ -30,9 +30,8 @@ function App() {
   //MODAL STATE
   const [showModal, setShowModal] = useState(false)
   const handleClose = () => setShowModal(false)
-  const handleOpen = () => { setShowModal(true); console.log("The modal state was changed") }
+  const handleOpen = () => { setShowModal(true); console.log("The modal state is now True") }
 
-  const check = () => { console.log("The modal should have opened") }
 
   const addBudgetItem = (item) => {
 
@@ -100,7 +99,7 @@ function App() {
         </div>
 
         <AddBudgetItem onAdd={addBudgetItem} setShow={setShow} setDanger={setDanger} onOpen={handleOpen} />
-        {showModal && <ClearModal clearAll={clearLists} show={showModal} handleClose={handleClose} onCheck={check()} />}
+        {showModal && <ClearModal clearAll={clearLists} show={showModal} handleClose={handleClose} />}
       </div>
 
 
