@@ -14,7 +14,7 @@ function AddedAlert({ showm, setShow, danger }) {
                 <span className='text'> All fields must be filled out</span> :
                 <span className='text'> Item added successfully! </span>
             }
-            <span className="close" onClick={() => setShow(false)}>&times;</span>
+            <span className="close" onClick={() => setShow(false)}> &times;</span>
         </Alert>
     );
 }

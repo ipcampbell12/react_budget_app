@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 
-function AddBudgetItem({ onAdd }) {
+function AddBudgetItem({ onAdd, setShow, setDanger, clearAll, onOpen }) {
 
     //have a separate component level state for each form field
     const [type, setType] = useState('inc')
@@ -14,7 +14,8 @@ function AddBudgetItem({ onAdd }) {
     const onSubmit = (e) => {
         e.preventDefault()
         if (!description || !value || !category) {
-            alert('All fields must be filled out')
+            setDanger(true)
+            setShow(true)
             return
         }
 
@@ -77,7 +78,7 @@ function AddBudgetItem({ onAdd }) {
                 </div>
                 <div className="form-field">
 
-                    <input type="submit" value="Clear All Items" className="btn btn-warning" />
+                    <button onClick={onOpen} type="button" className="btn btn-warning">Clear Budgets</button>
 
                 </div>
                 <div className="form-field">

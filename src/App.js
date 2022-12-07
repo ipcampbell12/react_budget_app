@@ -7,8 +7,9 @@ import AddBudgetItem from './components/AddBudgetItem';
 import BarChart from './components/BarChart';
 import PieChart from './components/PieChart';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Alert } from 'react-bootstrap';
 import AddedAlert from './components/AddedAlert';
+import ClearModal from './components/ClearModal';
+
 
 export const numberFormatter =
   new Intl.NumberFormat('en-US', {
@@ -24,6 +25,10 @@ function App() {
   const [show, setShow] = useState(false)
   const [danger, setDanger] = useState(false)
 
+  const [showModal, setShowModal] = useState(false)
+  const closeModal = () => setShowModal(false)
+  const openModal = () => setShowModal(true)
+
   const addBudgetItem = (item) => {
 
     const id = (incomeState.length + expenseState.length) + 1
@@ -31,16 +36,15 @@ function App() {
     const newItem = { id, ...item }
 
     if (newItem.type === 'inc') {
-
-      console.log(newItem)
       setIncomeState([...incomeState, newItem])
-      console.log(newItem)
+      setDanger(false)
+      setShow(true)
     }
 
     if (newItem.type === 'exp') {
-      console.log(newItem)
       setExpenseState([...expenseState, newItem])
-      console.log(newItem)
+      setDanger(false)
+      setShow(true)
     }
 
   }
@@ -61,7 +65,6 @@ function App() {
     return accumulator + value.value
   }, 0)
 
-
   const expenseTotal = expenseState.reduce((accumulator, value) => {
     return accumulator + value.value
   }, 0)
@@ -69,6 +72,13 @@ function App() {
   const difference = Math.round(incomeTotal - expenseTotal)
 
   const overalPercentage = Math.round((expenseTotal / incomeTotal) * 100)
+
+  const clearLists = () => {
+    //const allState = [...incomeState, ...expenseState]
+    setIncomeState(incomeState.filter((item) => item.id < 0))
+    setExpenseState(expenseState.filter((item) => item.id < 0))
+
+  }
 
   return (
     <div className="app">
@@ -84,8 +94,8 @@ function App() {
           <PieChart />
         </div>
 
-        <AddBudgetItem onAdd={addBudgetItem} />
-
+        <AddBudgetItem onAdd={addBudgetItem} setShow={setShow} setDanger={setDanger} onOpen={openModal} />
+        {show && <ClearModal clearAll={clearLists} show={showModal} handClose={closeModal} />}
       </div>
 
 

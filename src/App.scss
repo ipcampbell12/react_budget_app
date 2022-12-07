@@ -248,3 +248,14 @@ body {
   }
 
 }
+
+.alert {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  .close {
+    cursor: pointer;
+  }
+}
