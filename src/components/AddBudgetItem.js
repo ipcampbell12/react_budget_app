@@ -18,6 +18,9 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
     ])
     const addCategory = (category) => {
         setCategoriesList([...categoriesList, category])
+        setCategoryDanger(false)
+        setAlertShow(true)
+
     }
 
     //CATEOGORY MODAL
@@ -29,6 +32,11 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
     const [clearModal, setClearModal] = useState(false)
     const handleClearClose = () => setClearModal(false)
     const handleClearOpen = () => setClearModal(true)
+
+    //ALERT STATE
+    const [alertShow, setAlertShow] = useState(false)
+
+    const [categoryDanger, setCategoryDanger] = useState(false)
 
 
     //have a separate component level state for each form field
@@ -115,7 +123,14 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
                 <button type="button" className="btn btn-secondary space" onClick={event => { handleOpen() }}> Remove Category </button>
             </div>
 
-            {categoryModal ? <CategoryModal show={categoryModal} onClose={handleClose} onAdd={addCategory} /> : ''}
+            {categoryModal ? <CategoryModal
+                show={categoryModal}
+                onClose={handleClose}
+                onAdd={addCategory}
+                categoryDanger={categoryDanger}
+                setCategoryDanger={setCategoryDanger}
+                setAlertShow={setAlertShow}
+                alertShow={alertShow} /> : ''}
         </div>
     );
 }

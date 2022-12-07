@@ -3,19 +3,18 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import CategoryAlert from './CategoryAlert';
 
-function CategoryModal({ show, onClose, onAdd }) {
+function CategoryModal({ show, onClose, onAdd, categoryDanger, setCategoryDanger, setAlertShow, alertShow }) {
 
     const [category, setCategory] = useState('')
 
-    //ALERT STATE
-    const [alertShow, setAlertShow] = useState(false)
 
-    const [danger, setDanger] = useState(false)
 
 
     const onSubmit = (e) => {
         e.preventDefault()
         if (!category) {
+            setCategoryDanger(true)
+            setAlertShow(true)
             return
         }
 
@@ -49,7 +48,7 @@ function CategoryModal({ show, onClose, onAdd }) {
                     </div>
 
                 </form>
-                {alertShow ? <CategoryAlert /> : ''}
+                {alertShow ? <CategoryAlert danger={categoryDanger} setAlertShow={setAlertShow} /> : ''}
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={event => { onClose() }}>
