@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function CategoryModal({ show, onClose }) {
+function CategoryModal({ show, onClose, onAdd }) {
+
+    const [category, setCategory] = useState('')
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        if (!category) {
+            return
+        }
+
+        onAdd({ category })
+    }
+
     return (
         <Modal
             show={show}
@@ -14,7 +26,15 @@ function CategoryModal({ show, onClose }) {
                 <Modal.Title>Would you like to add more categories?</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                Add a category below
+                <form action="" onSumbit={onSubmit}>
+                    <div className="form-field">
+                        <label htmlFor="" className="">Category Name</label>
+                        <input type="text" placeholder='Category Name' className="form-control" value={category} onChange={(e) => {
+                            setCategory(e.target.value)
+                        }} />
+                    </div>
+
+                </form>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={event => { onClose() }}>

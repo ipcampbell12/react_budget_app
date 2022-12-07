@@ -3,10 +3,11 @@ import CategoryModal from './CategoryModal';
 import ClearModal from './ClearModal';
 
 
-function AddBudgetItem({ onAdd, setShow, setDanger, clearLists }) {
+function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
 
     //CATEGORY STATE
-    const [catgoriesList, setCategoriesList] = useState([
+    const [categoriesList, setCategoriesList] = useState([
+        'Choose a category',
         'Income',
         'Sales',
         'Groceries',
@@ -15,6 +16,9 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists }) {
         'Medical',
         'Gifts and Contributions'
     ])
+    const addCategory = (category) => {
+        setCategoriesList([...categoriesList, category])
+    }
 
     //CATEOGORY MODAL
     const [categoryModal, setCategoryModal] = useState(false)
@@ -84,7 +88,7 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists }) {
                     <select className="add-category form-control" placeholder='Category' value={category} onChange={(e) => {
                         setCategory(e.target.value)
                     }}>
-                        {catgoriesList.map(category => (
+                        {categoriesList.map(category => (
                             <option> {category} </option>
                         ))}
                     </select>
@@ -96,15 +100,15 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists }) {
                 </div>
                 <div className="form-field">
 
-                    <button onClick={event => { handleClearOpen(); console.log("I got clicked") }} type="button" className="btn btn-warning">Clear Budgets</button>
+                    <button onClick={event => { handleClearOpen() }} type="button" className="btn btn-warning">Clear Budgets</button>
 
                 </div>
                 <div className="form-field">
 
                     <button type="button" className="btn btn-secondary" onClick={event => { handleOpen() }}> Add Category </button>
                 </div>
-                {clearModal ? <ClearModal show={clearModal} onClose={handleClearClose} clearLists={clearLists} /> : ''}
-                {categoryModal ? <CategoryModal show={categoryModal} onClose={handleClose} /> : ''}
+                {clearModal ? <ClearModal show={clearModal} onClose={handleClearClose} clearLists={clearLists} length={length} /> : ''}
+                {categoryModal ? <CategoryModal show={categoryModal} onClose={handleClose} onAdd={addCategory} /> : ''}
 
 
             </form>

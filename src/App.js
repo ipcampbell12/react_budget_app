@@ -26,6 +26,10 @@ function App() {
   const [show, setShow] = useState(false)
   const [danger, setDanger] = useState(false)
 
+  const budgetLength = [...incomeState, ...expenseState].length
+
+
+
 
   const addBudgetItem = (item) => {
 
@@ -73,11 +77,6 @@ function App() {
 
   const clearLists = () => {
 
-    if (incomeState.length === 0 || expenseState.length === 0) {
-      console.log("There are no budget items to remove")
-    }
-
-
     setIncomeState(incomeState.filter((item) => item.id < 0))
     setExpenseState(expenseState.filter((item) => item.id < 0))
 
@@ -97,7 +96,7 @@ function App() {
           <PieChart />
         </div>
 
-        <AddBudgetItem onAdd={addBudgetItem} setShow={setShow} setDanger={setDanger} clearLists={clearLists} />
+        <AddBudgetItem onAdd={addBudgetItem} setShow={setShow} setDanger={setDanger} clearLists={clearLists} length={budgetLength} />
 
       </div>
 
