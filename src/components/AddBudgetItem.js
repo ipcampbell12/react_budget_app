@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
 import CategoryModal from './Modals&Alerts/CategoryModal';
 import ClearModal from './Modals&Alerts/ClearModal';
+import RemoveModal from './Modals&Alerts/RemoveModal';
 
 
 function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
 
     //CATEGORY STATE
     const [categoriesList, setCategoriesList] = useState([
-        'Choose a category',
-        'Income',
-        'Sales',
-        'Groceries',
-        'Shopping',
-        'Housing and Utilities',
-        'Medical'
+        { id: 0, category: 'Choose a Category:' },
+        { id: 1, category: 'Income' },
+        { id: 2, category: 'Housing and Utilities' },
+        { id: 3, category: 'Groceries' },
+        { id: 4, category: 'Medical Expenses' }
     ])
     const addCategory = (category) => {
-        setCategoriesList([...categoriesList, category])
+
+        const id = (categoriesList.length + categoriesList.length) + 1
+
+        const newItem = { id, ...category }
+
+
+        setCategoriesList([...categoriesList, newItem])
         setCategoryDanger(false)
         setAlertShow(true)
 
+    }
+
+    const deleteCategory = (id) => {
+        setCategoriesList(categoriesList.filter((category) => category.id !== id))
     }
 
     //CATEOGORY MODAL
@@ -34,8 +43,12 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
 
     //ALERT STATE
     const [alertShow, setAlertShow] = useState(false)
-
     const [categoryDanger, setCategoryDanger] = useState(false)
+
+    //REMOVE STATE
+    const [removeModal, setRemoveModal] = useState(false)
+    const hanldeRemoveClose = () => setRemoveModal(false)
+    const handleRemoveOpen = () => setRemoveModal(true)
 
 
     //have a separate component level state for each form field
@@ -96,7 +109,7 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
                         setCategory(e.target.value)
                     }}>
                         {categoriesList.map(category => (
-                            <option> {category} </option>
+                            <option> {category.category} </option>
                         ))}
                     </select>
                 </div>
@@ -119,17 +132,23 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
             <div className="btn-div">
                 <button type="button" className="btn btn-secondary space" onClick={event => { handleOpen() }}> Add Category </button>
 
-                <button type="button" className="btn btn-secondary space" onClick={event => { handleOpen() }}> Remove Category </button>
+                <button type="button" className="btn btn-secondary space" onClick={event => { handleRemoveOpen() }}> Remove Category </button>
             </div>
 
-            {categoryModal ? <CategoryModal
+            {categoryModal && <CategoryModal
                 show={categoryModal}
                 onClose={handleClose}
                 onAdd={addCategory}
                 categoryDanger={categoryDanger}
                 setCategoryDanger={setCategoryDanger}
                 setAlertShow={setAlertShow}
-                alertShow={alertShow} /> : ''}
+                alertShow={alertShow} />}
+
+            {removeModal && <RemoveModal
+                show={removeModal}
+                onClose={hanldeRemoveClose}
+                categoriesList={categoriesList} />}
+
         </div>
     );
 }

@@ -18,7 +18,7 @@ function CategoryModal({ show, onClose, onAdd, categoryDanger, setCategoryDanger
             return
         }
 
-        onAdd(category)
+        onAdd({ category })
 
         setCategory('')
     }
