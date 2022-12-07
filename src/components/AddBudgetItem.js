@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import CategoryModal from './CategoryModal';
-import ClearModal from './ClearModal';
+import CategoryModal from './Modals&Alerts/CategoryModal';
+import ClearModal from './Modals&Alerts/ClearModal';
 
 
 function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
@@ -13,8 +13,7 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
         'Groceries',
         'Shopping',
         'Housing and Utilities',
-        'Medical',
-        'Gifts and Contributions'
+        'Medical'
     ])
     const addCategory = (category) => {
         setCategoriesList([...categoriesList, category])
