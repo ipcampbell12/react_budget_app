@@ -8,7 +8,6 @@ import BarChart from './components/BarChart';
 import PieChart from './components/PieChart';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddedAlert from './components/AddedAlert';
-import ClearModal from './components/ClearModal';
 
 
 export const numberFormatter =
@@ -26,11 +25,6 @@ function App() {
   //ALERT STATE
   const [show, setShow] = useState(false)
   const [danger, setDanger] = useState(false)
-
-  //MODAL STATE
-  const [showModal, setShowModal] = useState(false)
-  const handleClose = () => setShowModal(false)
-  const handleOpen = () => { setShowModal(true); console.log("The modal state is now True") }
 
 
   const addBudgetItem = (item) => {
@@ -78,7 +72,12 @@ function App() {
   const overalPercentage = Math.round((expenseTotal / incomeTotal) * 100)
 
   const clearLists = () => {
-    //const allState = [...incomeState, ...expenseState]
+
+    if (incomeState.length === 0 || expenseState.length === 0) {
+      console.log("There are no budget items to remove")
+    }
+
+
     setIncomeState(incomeState.filter((item) => item.id < 0))
     setExpenseState(expenseState.filter((item) => item.id < 0))
 
@@ -98,8 +97,8 @@ function App() {
           <PieChart />
         </div>
 
-        <AddBudgetItem onAdd={addBudgetItem} setShow={setShow} setDanger={setDanger} onOpen={handleOpen} />
-        {showModal && <ClearModal clearAll={clearLists} show={showModal} handleClose={handleClose} />}
+        <AddBudgetItem onAdd={addBudgetItem} setShow={setShow} setDanger={setDanger} clearLists={clearLists} />
+
       </div>
 
 

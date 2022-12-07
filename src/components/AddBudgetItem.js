@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import CategoryModal from './CategoryModal';
+import ClearModal from './ClearModal';
 
 
-
-function AddBudgetItem({ onAdd, setShow, setDanger, clearAll, onOpen }) {
+function AddBudgetItem({ onAdd, setShow, setDanger, clearLists }) {
 
     //CATEGORY STATE
     const [catgoriesList, setCategoriesList] = useState([
@@ -14,6 +15,16 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearAll, onOpen }) {
         'Medical',
         'Gifts and Contributions'
     ])
+
+    //CATEOGORY MODAL
+    const [categoryModal, setCategoryModal] = useState(false)
+    const handleOpen = () => setCategoryModal(true);
+    const handleClose = () => setCategoryModal(false);
+
+    //CLEAR MODAL
+    const [clearModal, setClearModal] = useState(false)
+    const handleClearClose = () => setClearModal(false)
+    const handleClearOpen = () => setClearModal(true)
 
 
     //have a separate component level state for each form field
@@ -85,14 +96,15 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearAll, onOpen }) {
                 </div>
                 <div className="form-field">
 
-                    <button onClick={event => { onOpen(); console.log("I got clicked") }} type="button" className="btn btn-warning">Clear Budgets</button>
+                    <button onClick={event => { handleClearOpen(); console.log("I got clicked") }} type="button" className="btn btn-warning">Clear Budgets</button>
 
                 </div>
                 <div className="form-field">
 
-                    <input type="submit" value="Add Category" className="btn btn-secondary" />
+                    <button type="button" className="btn btn-secondary" onClick={event => { handleOpen() }}> Add Category </button>
                 </div>
-
+                {clearModal ? <ClearModal show={clearModal} onClose={handleClearClose} clearLists={clearLists} /> : ''}
+                {categoryModal ? <CategoryModal show={categoryModal} onClose={handleClose} /> : ''}
 
 
             </form>
