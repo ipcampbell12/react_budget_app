@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import CategoryAlert from './CategoryAlert';
 
 function CategoryModal({ show, onClose, onAdd }) {
 
     const [category, setCategory] = useState('')
+
+    //ALERT STATE
+    const [alertShow, setAlertShow] = useState(false)
+
+    const [danger, setDanger] = useState(false)
+
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -13,6 +20,8 @@ function CategoryModal({ show, onClose, onAdd }) {
         }
 
         onAdd(category)
+
+        setCategory('')
     }
 
     return (
@@ -40,6 +49,7 @@ function CategoryModal({ show, onClose, onAdd }) {
                     </div>
 
                 </form>
+                {alertShow ? <CategoryAlert /> : ''}
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={event => { onClose() }}>
