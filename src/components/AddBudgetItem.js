@@ -147,7 +147,8 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
             {removeModal && <RemoveModal
                 show={removeModal}
                 onClose={hanldeRemoveClose}
-                categoriesList={categoriesList} />}
+                categoriesList={categoriesList}
+                onDelete={deleteCategory} />}
 
         </div>
     );
