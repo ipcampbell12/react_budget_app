@@ -4,6 +4,18 @@ import React, { useState } from 'react';
 
 function AddBudgetItem({ onAdd, setShow, setDanger, clearAll, onOpen }) {
 
+    //CATEGORY STATE
+    const [catgoriesList, setCategoriesList] = useState([
+        'Income',
+        'Sales',
+        'Groceries',
+        'Shopping',
+        'Housing and Utilities',
+        'Medical',
+        'Gifts and Contributions'
+    ])
+
+
     //have a separate component level state for each form field
     const [type, setType] = useState('inc')
     const [description, setDescription] = useState('')
@@ -61,14 +73,9 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearAll, onOpen }) {
                     <select className="add-category form-control" placeholder='Category' value={category} onChange={(e) => {
                         setCategory(e.target.value)
                     }}>
-                        <option value="" disabled selected hidden>Choose a category</option>
-                        <option value="Housing and utilties">Housing and Utilties</option>
-                        <option value="Income">Income</option>
-                        <option value="Groceries">Groceries</option>
-                        <option value="Shopping">Shopping</option>
-                        <option value="Charitable Contributions">Charitable Contributions</option>
-                        <option value="Work Expenses">Work Expenses</option>
-                        <option value="Restaurants and Coffee">Restaurants and Coffee</option>
+                        {catgoriesList.map(category => (
+                            <option> {category} </option>
+                        ))}
                     </select>
                 </div>
 
