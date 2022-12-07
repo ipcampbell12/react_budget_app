@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CategoryModal from './Modals&Alerts/CategoryModal';
 import ClearModal from './Modals&Alerts/ClearModal';
 import RemoveModal from './Modals&Alerts/RemoveModal';
@@ -14,6 +14,20 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
         { id: 3, category: 'Groceries' },
         { id: 4, category: 'Medical Expenses' }
     ])
+
+    useEffect(() => {
+        localStorage.setItem('categoriesList', JSON.stringify(categoriesList))
+    }, [categoriesList]
+    )
+
+    useEffect(() => {
+        const categories = JSON.parse(localStorage.getItem('categoriesList'))
+        if (categories === 5) {
+            setCategoriesList(categories)
+        }
+    }, []
+    )
+
     const addCategory = (category) => {
 
         const id = (categoriesList.length + categoriesList.length) + 1

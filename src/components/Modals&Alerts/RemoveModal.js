@@ -36,7 +36,6 @@ function RemoveModal({ show, onClose, categoriesList, onDelete }) {
                 <Button variant="secondary" onClick={onClose}>
                     Close
                 </Button>
-                <Button variant="primary">Understood</Button>
             </Modal.Footer>
         </Modal>
     );

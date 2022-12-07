@@ -14,7 +14,7 @@ function ClearModal({ show, onClose, clearLists, length }) {
             keyboard={false}
         >
             <Modal.Header closeButton>
-                <Modal.Title>Clear cart?</Modal.Title>
+                <Modal.Title>Clear budget lists?</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 Are you sure you want to remove all budget items? These changes cannot be undone.
