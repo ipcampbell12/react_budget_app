@@ -7,7 +7,7 @@ import AddBudgetItem from './components/AddBudgetItem';
 import BarChart from './components/BarChart';
 import PieChart from './components/PieChart';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AddedAlert from './components/AddedAlert';
+import AddedAlert from './components/Modals&Alerts/AddedAlert';
 
 
 export const numberFormatter =
