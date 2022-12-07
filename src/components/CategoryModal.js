@@ -12,7 +12,9 @@ function CategoryModal({ show, onClose, onAdd }) {
             return
         }
 
-        onAdd({ category })
+        onAdd(category)
+
+        console.log(category)
     }
 
     return (
@@ -26,21 +28,26 @@ function CategoryModal({ show, onClose, onAdd }) {
                 <Modal.Title>Would you like to add more categories?</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form action="" onSumbit={onSubmit}>
+                <form action="" onSubmit={onSubmit}>
                     <div className="form-field">
                         <label htmlFor="" className="">Category Name</label>
                         <input type="text" placeholder='Category Name' className="form-control" value={category} onChange={(e) => {
                             setCategory(e.target.value)
                         }} />
                     </div>
+                    <br />
+                    <div className="form-field">
+                        <input type="submit" value="Add Category" className="btn btn-primary" />
+
+                    </div>
 
                 </form>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={event => { onClose() }}>
-                    Close
+                    Done
                 </Button>
-                <Button variant="primary">Understood</Button>
+
             </Modal.Footer>
         </Modal>
     );
