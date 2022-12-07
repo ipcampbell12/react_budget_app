@@ -19,15 +19,20 @@ export const numberFormatter =
 
 function App() {
 
+  //BUDGET STATE
   const [incomeState, setIncomeState] = useState([])
   const [expenseState, setExpenseState] = useState([])
 
+  //ALERT STATE
   const [show, setShow] = useState(false)
   const [danger, setDanger] = useState(false)
 
+  //MODAL STATE
   const [showModal, setShowModal] = useState(false)
-  const closeModal = () => setShowModal(false)
-  const openModal = () => setShowModal(true)
+  const handleClose = () => setShowModal(false)
+  const handleOpen = () => { setShowModal(true); console.log("The modal state was changed") }
+
+  const check = () => { console.log("The modal should have opened") }
 
   const addBudgetItem = (item) => {
 
@@ -94,8 +99,8 @@ function App() {
           <PieChart />
         </div>
 
-        <AddBudgetItem onAdd={addBudgetItem} setShow={setShow} setDanger={setDanger} onOpen={openModal} />
-        {show && <ClearModal clearAll={clearLists} show={showModal} handClose={closeModal} />}
+        <AddBudgetItem onAdd={addBudgetItem} setShow={setShow} setDanger={setDanger} onOpen={handleOpen} />
+        {showModal && <ClearModal clearAll={clearLists} show={showModal} handleClose={handleClose} onCheck={check()} />}
       </div>
 
 

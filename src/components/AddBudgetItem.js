@@ -78,7 +78,7 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearAll, onOpen }) {
                 </div>
                 <div className="form-field">
 
-                    <button onClick={onOpen} type="button" className="btn btn-warning">Clear Budgets</button>
+                    <button onClick={event => { onOpen(); console.log("I got clicked") }} type="button" className="btn btn-warning">Clear Budgets</button>
 
                 </div>
                 <div className="form-field">

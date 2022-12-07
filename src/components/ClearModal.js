@@ -3,10 +3,12 @@ import Modal from 'react-bootstrap/Modal';
 
 
 
-function ClearModal({ showModal, handleClose }) {
+function ClearModal({ showModal, handleClose, onCheck }) {
+
+
     return (
         <Modal
-            showModal={showModal}
+            show={showModal}
             onHide={handleClose}
             backdrop="static"
             keyboard={false}
@@ -18,13 +20,16 @@ function ClearModal({ showModal, handleClose }) {
                 Are you sure you want to remove all budget items? These changes cannot be undone.
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={event => { handleClose() }}>
                     Yes
                 </Button>
                 <Button variant="primary" onClick={handleClose}>No</Button>
             </Modal.Footer>
         </Modal>
     );
+
+
+
 }
 
 export default ClearModal;
