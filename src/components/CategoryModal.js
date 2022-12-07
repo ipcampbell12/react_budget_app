@@ -13,8 +13,6 @@ function CategoryModal({ show, onClose, onAdd }) {
         }
 
         onAdd(category)
-
-        console.log(category)
     }
 
     return (

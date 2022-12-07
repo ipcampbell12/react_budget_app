@@ -24,6 +24,7 @@ function App() {
 
   //ALERT STATE
   const [show, setShow] = useState(false)
+
   const [danger, setDanger] = useState(false)
 
   const budgetLength = [...incomeState, ...expenseState].length

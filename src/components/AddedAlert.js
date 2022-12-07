@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import Alert from 'react-bootstrap/Alert'
 
 
-function AddedAlert({ showm, setShow, danger }) {
+function AddedAlert({ setShow, danger }) {
 
     useEffect(() => {
         setTimeout(() => setShow(false), 4000)
