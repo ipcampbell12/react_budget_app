@@ -35,21 +35,19 @@ function BarChart({ income, expenses }) {
         setChartData({
             labels: ['Income', 'Expenses'],
             datasets: [{
-                label: "Income vs Expenses",
+                label: "Income",
                 data: [income, expenses],
                 borderColor: "rgb(53,162,235)",
-                backgroundColor: [
-                    "rgb(40, 185, 181)",
+                backgroundColor: ["rgba(40, 185, 181, 0.8)",
                     "rgba(255, 80, 73, 0.8)"
                 ]
-            },
-            ],
+            }],
         });
         setChartOptions({
             responsive: true,
             plugins: {
                 legend: {
-                    position: "top"
+                    display: false
                 },
                 title: {
                     display: true,
