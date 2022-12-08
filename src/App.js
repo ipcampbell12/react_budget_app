@@ -29,8 +29,7 @@ function App() {
 
   const budgetLength = [...incomeState, ...expenseState].length
 
-
-
+  const budget = [...incomeState, ...expenseState]
 
   const addBudgetItem = (item) => {
 
@@ -94,7 +93,7 @@ function App() {
         <div className="upper">
           <BarChart income={incomeTotal} expenses={expenseTotal} />
           <TotalBudget income={numberFormatter.format(incomeTotal)} expenses={numberFormatter.format(expenseTotal)} difference={numberFormatter.format(difference)} percentage={overalPercentage} />
-          <PieChart />
+          <PieChart budget={budget} />
         </div>
 
         <AddBudgetItem onAdd={addBudgetItem} setShow={setShow} setDanger={setDanger} clearLists={clearLists} length={budgetLength} />

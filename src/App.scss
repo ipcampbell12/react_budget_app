@@ -137,6 +137,11 @@ body {
         margin-left: var(--uper-box-left);
         margin-right: var(--upper-box-right);
         margin-top: var(--upper-box-top);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
       }
     }
 
