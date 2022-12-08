@@ -92,7 +92,7 @@ function App() {
           <h1> Budget App</h1>
         </div>
         <div className="upper">
-          <BarChart />
+          <BarChart income={incomeTotal} expenses={expenseTotal} />
           <TotalBudget income={numberFormatter.format(incomeTotal)} expenses={numberFormatter.format(expenseTotal)} difference={numberFormatter.format(difference)} percentage={overalPercentage} />
           <PieChart />
         </div>
