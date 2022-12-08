@@ -16,15 +16,14 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
     ])
 
     useEffect(() => {
-        localStorage.setItem('categoriesList', JSON.stringify(categoriesList))
+        if (categoriesList !== null) window.localStorage.setItem('categoriesList', JSON.stringify(categoriesList))
     }, [categoriesList]
     )
 
     useEffect(() => {
-        const categories = JSON.parse(localStorage.getItem('categoriesList'))
-        if (categories === 5) {
-            setCategoriesList(categories)
-        }
+        const data = JSON.parse(window.localStorage.getItem('categoriesList'))
+        if (data !== null) setCategoriesList(data)
+
     }, []
     )
 
