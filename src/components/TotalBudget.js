@@ -6,18 +6,18 @@ function TotalBudget({ income, expenses, difference, percentage }) {
 
             <div className='difference bg-info'>
                 <span>Total Budget</span>
-                <span> {difference} </span>
+                <span className="values"> {difference} </span>
             </div>
 
             <div className="income ">
                 <span>Income</span>
-                <span>+ {income}</span>
+                <span className="values">+ {income}</span>
             </div>
 
             <div className="expenses " >
                 <span>Expenses</span>
-                <span> - {expenses}</span>
-                <span>{percentage > 0 ? percentage : 0} %</span>
+                <span className="values"> - {expenses}</span>
+                <span className="values">{percentage > 0 ? percentage : 0} %</span>
             </div >
         </div >
     );

@@ -103,21 +103,19 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
                 </div>
 
                 <div className="form-field">
-                    <label htmlFor="" className="">Description</label>
+
                     <input type="text" placeholder='Description' className="form-control" value={description} onChange={(e) => {
                         setDescription(e.target.value)
                     }} />
                 </div>
 
                 <div className="form-field">
-                    <label htmlFor="" className="">Amount</label>
-                    <input type="number" className="form-control" value={value} onChange={(e) => {
+                    <input type="number" className="form-control" value={value} placeholder="Value" onChange={(e) => {
                         setValue(parseFloat(e.target.value))
                     }} />
                 </div>
 
                 <div className="form-field">
-                    <label htmlFor="" className="">Category</label>
                     <select className="add-category form-control" placeholder='Category' value={category} onChange={(e) => {
                         setCategory(e.target.value)
                     }}>
