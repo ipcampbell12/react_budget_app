@@ -71,6 +71,8 @@ body {
         margin-left: var(--uper-box-left);
         margin-right: var(--upper-box-right);
         margin-top: var(--upper-box-top);
+        margin-bottom: 1%;
+
       }
 
       .budget {
@@ -79,6 +81,7 @@ body {
         margin-left: var(--uper-box-left);
         margin-right: var(--upper-box-right);
         margin-top: var(--upper-box-top);
+        margin-bottom: 1%;
         font-size: 1.25em;
 
         .difference {
@@ -137,10 +140,18 @@ body {
         margin-left: var(--uper-box-left);
         margin-right: var(--upper-box-right);
         margin-top: var(--upper-box-top);
+        margin-bottom: 1%;
+
 
         display: flex;
-        flex-direction: row;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        .pie {
+          margin-bottom: 1em;
+
+        }
+
 
       }
     }
@@ -164,7 +175,7 @@ body {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 75%;
+        width: 65%;
 
         .form-field {
           display: flex;
@@ -200,7 +211,7 @@ body {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        width: 25%;
+        width: 35%;
 
         .space {
 

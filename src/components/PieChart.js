@@ -8,7 +8,7 @@ import {
     BarElement,
     Title,
     Tooltip,
-    Legend,
+    Legend
 } from 'chart.js'
 
 import { Pie } from "react-chartjs-2"
@@ -58,6 +58,7 @@ function PieChart({ budget }) {
     const [chartOptions, setChartOptions] = useState({});
 
     useEffect(() => {
+        console.log(categoryList)
         setChartData({
             labels: categoryList,
             datasets: [{
@@ -79,9 +80,11 @@ function PieChart({ budget }) {
 
         setChartOptions({
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    display: false
+                    display: true,
+                    position: 'right'
                 },
                 title: {
                     display: true,
@@ -89,7 +92,7 @@ function PieChart({ budget }) {
                 },
                 datalabels: {
                     display: true,
-                    align: 'bottom',
+                    align: 'left',
                     backgroundColor: '#ccc',
                     borderRadius: 3,
                     font: {
@@ -109,7 +112,9 @@ function PieChart({ budget }) {
 
     return (
         <div className='pie-chart'>
-            <Pie options={chartOptions} data={chartData} />
+
+            <Pie options={chartOptions} data={chartData} className='pie' />
+
         </div>
     );
 }

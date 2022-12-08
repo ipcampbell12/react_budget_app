@@ -131,22 +131,30 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
                     <input type="submit" value="Add Budget Item" className="btn btn-primary" />
 
                 </div>
-                <div className="form-field">
 
-                    <button onClick={event => { handleClearOpen() }} type="button" className="btn btn-warning">Clear Budgets</button>
-
-                </div>
-
-                {clearModal ? <ClearModal show={clearModal} onClose={handleClearClose} clearLists={clearLists} length={length} /> : ''}
 
 
 
             </form>
+
+
+
+
+
             <div className="btn-div">
+
+                <button onClick={event => { handleClearOpen() }} type="button" className="btn btn-warning">Clear Budgets</button>
+
                 <button type="button" className="btn btn-secondary space" onClick={event => { handleOpen() }}> Add Category </button>
 
                 <button type="button" className="btn btn-secondary space" onClick={event => { handleRemoveOpen() }}> Remove Category </button>
             </div>
+
+            {clearModal ? <ClearModal
+                show={clearModal}
+                onClose={handleClearClose}
+                clearLists={clearLists}
+                length={length} /> : ''}
 
             {categoryModal && <CategoryModal
                 show={categoryModal}
