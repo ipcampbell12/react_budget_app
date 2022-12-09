@@ -143,9 +143,9 @@ function AddBudgetItem({ onAdd, setShow, setDanger, clearLists, length }) {
 
                 <button onClick={event => { handleClearOpen() }} type="button" className="btn btn-warning">Clear Budgets</button>
 
-                <button type="button" className="btn btn-secondary space" onClick={event => { handleOpen() }}> Add Category </button>
+                <button type="button" className="btn btn-info space" onClick={event => { handleOpen() }}> Add Category </button>
 
-                <button type="button" className="btn btn-secondary space" onClick={event => { handleRemoveOpen() }}> Remove Category </button>
+                <button type="button" className="btn btn-info space" onClick={event => { handleRemoveOpen() }}> Remove Category </button>
             </div>
 
             {clearModal ? <ClearModal
