@@ -31,11 +31,15 @@ function App() {
 
   const budget = [...incomeState, ...expenseState]
 
+
+
   const addBudgetItem = (item) => {
 
     const id = (incomeState.length + expenseState.length) + 1
 
     const newItem = { id, ...item }
+
+
 
     if (newItem.type === 'inc') {
       setIncomeState([...incomeState, newItem])

@@ -58,7 +58,7 @@ function PieChart({ budget }) {
     const [chartOptions, setChartOptions] = useState({});
 
     useEffect(() => {
-        console.log(categoryList)
+        // console.log(categoryList)
         setChartData({
             labels: categoryList,
             datasets: [{
