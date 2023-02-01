@@ -1,5 +1,5 @@
 import './App.scss';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import IncomeItems from './components/IncomeItems';
 import ExpenseItems from './components/ExpenseItems'
 import TotalBudget from './components/TotalBudget';
@@ -18,9 +18,23 @@ export const numberFormatter =
 
 function App() {
 
+  const getIncomeValues = (state) => {
+    const storedValues = localStorage.getItem(state);
+    return storedValues ? JSON.parse(storedValues) : [];
+  }
+
   //BUDGET STATE
-  const [incomeState, setIncomeState] = useState([])
-  const [expenseState, setExpenseState] = useState([])
+  const [incomeState, setIncomeState] = useState(getIncomeValues('incomeItems'))
+  const [expenseState, setExpenseState] = useState(getIncomeValues('expenseItems'))
+
+
+  useEffect(() => {
+    localStorage.setItem('incomeItems', JSON.stringify(incomeState))
+  }, [incomeState])
+
+  useEffect(() => {
+    localStorage.setItem('expenseItems', JSON.stringify(expenseState))
+  }, [expenseState])
 
   //ALERT STATE
   const [show, setShow] = useState(false)
